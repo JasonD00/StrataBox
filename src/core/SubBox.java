@@ -19,8 +19,7 @@ public class SubBox {
     }
 
     // If the stack is not empty then pop and remove the top item
-    public Item deleteItem() {
-        return items.isEmpty() ? null : items.pop();
+    public Item deleteItem() {return items.isEmpty() ? null : items.pop();
     }
 
     // return items

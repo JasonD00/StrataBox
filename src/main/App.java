@@ -1,16 +1,18 @@
+package main;
+
+import agents.AdminAgent;
 import agents.TempAgent;
 import core.Item;
 import core.MainBox;
 import core.Space;
 import core.SubBox;
 
-import java.util.List;
-
 public class App {
     public static void main(String[] args) {
 
         // Basic Agent
         TempAgent tmp = new TempAgent();
+        AdminAgent a = new AdminAgent();
 
        Space mySpace = new Space("Main Storage");
 
@@ -50,7 +52,7 @@ public class App {
 
         // Display
         for (MainBox mb : mySpace.getMainBoxes()) {
-            System.out.println("MainBox: " + mb.getName() + " Category: " + mb.getCategory());
+            System.out.println("\nMainBox: " + mb.getName() + " Category: " + mb.getCategory());
 
                 for (SubBox sb : mb.getSubBoxes()) {
                     System.out.println("SubBox: " + sb.getName() + " Category: " + sb.getCategory());
@@ -63,6 +65,11 @@ public class App {
 
 
             tmp.scan(mySpace);
+            tmp.highlight();
+
+            a.verifyTempAgent(tmp, mySpace);
+            a.countAllItems(mySpace);
+            a.printReport(mySpace);
         }
 
 
